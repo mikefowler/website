@@ -1,8 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Mike Fowler',
+    description: '',
+    author: {
+      name: 'Mike Fowler',
+      email: 'mike@mikefowler.me',
+    },
   },
   plugins: [
+    'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -18,4 +24,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};

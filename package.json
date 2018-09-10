@@ -12,14 +12,21 @@
     "lint": "tslint --project ."
   },
   "dependencies": {
+    "@types/styled-system": "^3.0.4",
+    "emotion": "^9.2.8",
+    "emotion-server": "^9.2.8",
+    "emotion-theming": "^9.2.6",
     "gatsby": "^2.0.0-rc.13",
+    "gatsby-plugin-emotion": "^2.0.0-rc.1",
     "gatsby-plugin-manifest": "^2.0.2-rc.1",
     "gatsby-plugin-offline": "^2.0.0-rc.4",
     "gatsby-plugin-react-helmet": "^3.0.0-rc.1",
     "gatsby-plugin-typescript": "^2.0.0-rc.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-helmet": "^5.2.0"
+    "react-emotion": "^9.2.8",
+    "react-helmet": "^5.2.0",
+    "styled-system": "^3.0.2"
   },
   "license": "MIT",
   "devDependencies": {

@@ -1,7 +1,10 @@
+import { ThemeProvider } from 'emotion-theming';
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
+import theme from '../shared/theme';
+import Container from './Container';
 import Header from './Header';
 import './layout.css';
 
@@ -10,6 +13,8 @@ const QUERY = graphql`
     site {
       siteMetadata {
         title
+        description
+        keywords
       }
     }
   }
@@ -18,28 +23,23 @@ const QUERY = graphql`
 const Layout: React.SFC = ({ children }) => (
   <StaticQuery query={QUERY}>
     {(data) => (
-      <div>
+      <>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: data.site.siteMetadata.description },
+            { name: 'keywords', content: data.site.siteMetadata.keywords.join(',') },
           ]}
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
-      </div>
+        <ThemeProvider theme={theme}>
+          <>
+            <Header siteTitle={data.site.siteMetadata.title} />
+            <Container>{children}</Container>
+          </>
+        </ThemeProvider>
+      </>
     )}
   </StaticQuery>
 );

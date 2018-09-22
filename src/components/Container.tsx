@@ -1,6 +1,4 @@
 import * as React from 'react';
-import styled from 'react-emotion';
-
 import Box from './Box';
 
 interface ContainerProps {
@@ -8,7 +6,7 @@ interface ContainerProps {
 }
 
 const Container: React.SFC<ContainerProps> = ({ children, className }) => (
-  <Box width={[1, 960]} m="0 auto" py={2} className={className}>
+  <Box maxWidth={1192} m="0 auto" px="2rem" py={2} className={className}>
     {children}
   </Box>
 );

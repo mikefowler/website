@@ -3,13 +3,15 @@ import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
+import injectGlobalStyles from '../shared/injectGlobalStyles';
 import theme from '../shared/theme';
 import Container from './Container';
 import Header from './Header';
-import './layout.css';
 
-const QUERY = graphql`
-  query SiteTitleQuery {
+injectGlobalStyles();
+
+const layoutQuery = graphql`
+  query LayoutQuery {
     site {
       siteMetadata {
         title
@@ -21,7 +23,7 @@ const QUERY = graphql`
 `;
 
 const Layout: React.SFC = ({ children }) => (
-  <StaticQuery query={QUERY}>
+  <StaticQuery query={layoutQuery}>
     {(data) => (
       <>
         <Helmet

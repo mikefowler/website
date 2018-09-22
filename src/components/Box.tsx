@@ -1,24 +1,39 @@
+import React from 'react';
 import styled, { StyledComponent } from 'react-emotion';
+import { Box as BaseBox, BoxProps as BaseBoxProps } from 'rebass/emotion';
 import {
-  color,
-  ColorProps,
-  fontSize,
-  FontSizeProps,
-  space,
-  SpaceProps,
-  width,
-  WidthProps,
+  flex,
+  flexBasis,
+  FlexBasisProps,
+  flexDirection,
+  FlexDirectionProps,
+  FlexProps,
+  justifyContent,
+  JustifyContentProps,
+  maxWidth,
+  MaxWidthProps,
+  order,
+  OrderProps,
 } from 'styled-system';
 
-interface BoxProps extends ColorProps, FontSizeProps, SpaceProps, WidthProps {
-  className?: string;
+interface BoxProps
+  extends BaseBoxProps,
+    FlexDirectionProps,
+    FlexProps,
+    FlexBasisProps,
+    JustifyContentProps,
+    OrderProps,
+    MaxWidthProps {
+  hidden?: boolean;
 }
 
-const Box: StyledComponent<BoxProps, {}, {}> = styled.div`
-  ${color}
-  ${fontSize}
-  ${space}
-  ${width}
+const Box = styled(BaseBox, { shouldForwardProp: (prop) => !['order'].includes(prop) })`
+  ${flex};
+  ${flexBasis};
+  ${flexDirection};
+  ${justifyContent};
+  ${order};
+  ${maxWidth};
 `;
 
 export default Box;

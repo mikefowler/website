@@ -1,14 +1,35 @@
 module.exports = {
   siteMetadata: {
-    title: 'Foobar',
+    title: 'Mike Fowler',
     description: '',
     keywords: ['foo', 'bar'],
     author: {
       name: 'Mike Fowler',
       email: 'mike@mikefowler.me',
     },
+    header: {
+      navlinks: [
+        {
+          text: 'Writing',
+          url: '/writing',
+        },
+        {
+          text: 'Journal',
+          url: '/journal',
+        },
+        {
+          text: 'Audio',
+          url: '/an-irrevocable-condition',
+        },
+        {
+          text: 'About',
+          url: '/about',
+        },
+      ],
+    },
   },
   plugins: [
+    'gatsby-plugin-extract-schema',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,

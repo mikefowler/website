@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier", "tslint-plugin-graphql"],
   "jsRules": {},
   "rules": {
     "interface-name": false,
@@ -9,7 +9,18 @@
     "ordered-imports": [true],
     "no-console": [false],
     "no-var-requires": true,
-    "quotemark": [true, "single", "jsx-double"]
+    "quotemark": [true, "single", "jsx-double"],
+    "no-submodule-imports": [true, "rebass", "@rebass/grid"],
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": [false],
+    "graphql": [
+      true,
+      {
+        "env": "relay",
+        "schemaJsonFilepath": "./schema.json",
+        "tagName": "gql"
+      }
+    ]
   },
   "rulesDirectory": []
 }

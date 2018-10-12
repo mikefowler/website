@@ -1,0 +1,13 @@
+{
+  schema: {
+    files: 'schema.json',
+  },
+  query: {
+    files: [
+      {
+        match: { include: 'src/**/*.tsx?' },
+        parser: ['EmbeddedQueryParser', { startTag: 'gql`', endTag: '`' }],
+      },
+    ],
+  },
+}

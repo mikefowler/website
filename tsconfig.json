@@ -1,6 +1,8 @@
 {
   "include": ["./src/**/*", "./typings/**/*"],
-  "files": ["./typings/rebass.d.ts", "./typings/modular-scale.d.ts", "./typings/palx.d.ts"],
+  "files": [
+    "./typings/**.d.ts"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
@@ -18,7 +20,9 @@
     "skipLibCheck": true,
     "plugins": [
       {
-        "name": "@divyenduz/ts-graphql-plugin"
+        "name": "@divyenduz/ts-graphql-plugin",
+        "schema": "schema.json",
+        "tag": "gql"
       }
     ]
   }

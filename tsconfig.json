@@ -1,8 +1,6 @@
 {
   "include": ["./src/**/*", "./typings/**/*"],
-  "files": [
-    "./typings/**.d.ts"
-  ],
+  "files": ["./typings/**.d.ts"],
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
@@ -17,13 +15,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmit": true,
-    "skipLibCheck": true,
-    "plugins": [
-      {
-        "name": "@divyenduz/ts-graphql-plugin",
-        "schema": "schema.json",
-        "tag": "gql"
-      }
-    ]
+    "skipLibCheck": true
   }
 }

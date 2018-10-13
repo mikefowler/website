@@ -10,7 +10,9 @@
     "develop": "gatsby develop",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project .",
-    "generate-types": "apollo codegen:generate --schema schema.json --target typescript --queries='./src/**/*.{ts,tsx}' --tagName gql",
+    "download-schema": "apollo schema:download --endpoint='http://localhost:8000/___graphql' schema.json",
+    "pregenerate-types": "npm run download-schema",
+    "generate-types": "apollo codegen:generate typings/__generated__ --outputFlat --schema=schema.json --target=typescript --queries='./src/**/*.{ts,tsx}' --tagName=gql",
     "generate-types:watch": "npm run generate-types -- --watch"
   },
   "dependencies": {
@@ -52,7 +54,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@divyenduz/ts-graphql-plugin": "^0.1.0",
     "@playlyfe/gql": "^2.6.0",
     "@types/node": "^10.9.4",
     "@types/reach__router": "^1.0.1",

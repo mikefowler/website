@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 const Container: React.SFC<ContainerProps> = ({ children, className }) => (
-  <Box maxWidth={1192} m="0 auto" px="2rem" py={2} className={className}>
+  <Box maxWidth={1192} m="0 auto" px="2rem" className={className}>
     {children}
   </Box>
 );

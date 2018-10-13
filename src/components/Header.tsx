@@ -1,4 +1,4 @@
-import { graphql as gql, Link, StaticQuery } from 'gatsby';
+import { StaticQuery, graphql as gql } from 'gatsby';
 import * as React from 'react';
 import { Flex } from 'rebass/emotion';
 
@@ -7,10 +7,11 @@ import Container from './Container';
 import HeaderLink from './HeaderLink';
 import HideFromScreenReaders from './HideFromScreenReaders';
 import HideVisually from './HideVisually';
+import Link from './Link';
 import Logo from './Logo';
-import UnstyledLink from './UnstyledLink';
 
 interface HeaderProps {
+  location: Location;
   siteTitle: string;
 }
 
@@ -31,14 +32,14 @@ const headerQuery = gql`
   }
 `;
 
-const Header: React.SFC<HeaderProps> = ({ siteTitle }) => (
+const Header: React.SFC<HeaderProps> = ({ location, siteTitle }) => (
   <StaticQuery query={headerQuery}>
     {({ site: { siteMetadata } }) => {
       const { navlinks } = siteMetadata.header;
 
       const links = siteMetadata.header.navlinks.map((link: any) => (
         <Box key={link.url} flex={['unset', 1]} px={2} order={1}>
-          <HeaderLink to={link.url} text={link.text} />
+          <HeaderLink location={location} to={link.url} text={link.text} />
         </Box>
       ));
 
@@ -47,12 +48,14 @@ const Header: React.SFC<HeaderProps> = ({ siteTitle }) => (
         Math.round(navlinks.length / 2),
         0,
         <Box key="/" flex={['unset', 1]} order={[-1, 1]} px={2} width={['100%', 'auto']}>
-          <UnstyledLink to="/">
-            <HideVisually>Home</HideVisually>
-            <HideFromScreenReaders>
-              <Logo />
-            </HideFromScreenReaders>
-          </UnstyledLink>
+          <Link to="/">
+            <Box py={2}>
+              <HideVisually>Home</HideVisually>
+              <HideFromScreenReaders>
+                <Logo />
+              </HideFromScreenReaders>
+            </Box>
+          </Link>
         </Box>,
       );
 
@@ -62,7 +65,7 @@ const Header: React.SFC<HeaderProps> = ({ siteTitle }) => (
             <HideVisually>
               <h1>{siteTitle}</h1>
             </HideVisually>
-            <Nav alignItems="stretch" justifyContent="center" flexWrap="wrap">
+            <Nav alignItems="center" justifyContent="center" flexWrap="wrap">
               {links}
             </Nav>
           </Container>

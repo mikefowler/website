@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Text } from 'rebass/emotion';
 
-import { LinkGetProps } from '@reach/router';
-import { css } from 'emotion';
 import styled from '../shared/styled';
-import Box from './Box';
-import UnstyledLink from './UnstyledLink';
+import { Column, Row } from './Grid';
+import Link from './Link';
 
 export interface HeaderLinkProps {
+  location: Location;
   text: string;
   to: string;
 }
@@ -40,14 +39,19 @@ const LinkUnderline = styled.div<LinkUnderlineProps>`
   width: 50%;
 `;
 
-const LinkContainer = styled(UnstyledLink, {
+const LinkContainer = styled(Link, {
   shouldForwardProp: (prop) => !['isCurrent', 'isPartiallyCurrent'].includes(prop),
 })<LinkContainerProps>`
+  color: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : '')};
+  cursor: ${(p) => (p.isCurrent ? 'default' : '')};
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-delay: 0.1s;
 
   ${LinkUnderline} {
     background: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : '')};
@@ -55,7 +59,11 @@ const LinkContainer = styled(UnstyledLink, {
     transform: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? 'translateY(0)' : '')};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
+    color: ${(p) =>
+      p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : p.theme.colors.gray8};
+
     ${LinkUnderline} {
       opacity: 1;
       transform: translateY(0);
@@ -63,20 +71,22 @@ const LinkContainer = styled(UnstyledLink, {
   }
 `;
 
-const HeaderLink: React.SFC<HeaderLinkProps> = ({ to, text }) => {
-  const isCurrent = location.pathname === to;
-  const isPartiallyCurrent = location.pathname.startsWith(to);
+const HeaderLink: React.SFC<HeaderLinkProps> = ({ location, to, text }) => {
+  const isCurrent = location && location.pathname === to;
+  const isPartiallyCurrent = location && location.pathname.startsWith(to);
 
   return (
     <LinkContainer to={to} isCurrent={isCurrent} isPartiallyCurrent={isPartiallyCurrent}>
-      <Box flexDirection="column" justifyContent="center">
-        <Text textAlign="center">
-          <LinkText fontFamily="serif">
-            {text}
-            <LinkUnderline active={isCurrent || isPartiallyCurrent} />
-          </LinkText>
-        </Text>
-      </Box>
+      <Row flexDirection="column" justifyContent="center">
+        <Column py={4}>
+          <Text textAlign="center">
+            <LinkText fontSize={1} fontFamily="serif">
+              {text}
+              <LinkUnderline active={isCurrent || isPartiallyCurrent} />
+            </LinkText>
+          </Text>
+        </Column>
+      </Row>
     </LinkContainer>
   );
 };

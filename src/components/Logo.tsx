@@ -1,17 +1,16 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { Text } from 'rebass/emotion';
+
 import HideVisibility from './HideVisibility';
 
 export interface LogoProps {
   expanded?: boolean;
 }
 
-export interface WordmarkProps extends LogoProps {}
-
 const WordmarkLeft = styled.span`
   position: absolute;
-  transform: translateX(37px);
+  transform: translateX(31px);
   transition: 0.2s transform cubic-bezier(0.785, 0.135, 0.15, 0.86);
 `;
 
@@ -25,7 +24,7 @@ const WordmarkRight = styled.span`
   opacity: 0;
 `;
 
-const Wordmark = styled.div<WordmarkProps>`
+const Wordmark = styled.div<LogoProps>`
   position: relative;
   color: ${({ theme }) => theme.colors.text};
   transition: 0.2s color;
@@ -47,7 +46,7 @@ const Wordmark = styled.div<WordmarkProps>`
 `;
 
 const Logo: React.SFC<LogoProps> = ({ expanded }) => (
-  <Text fontSize={6} fontWeight="normal" textAlign="center" fontFamily="cursive">
+  <Text fontWeight="normal" textAlign="center" fontFamily="cursive" fontSize="40">
     <Wordmark expanded={expanded}>
       <WordmarkLeft>
         M<HideVisibility>ike</HideVisibility>

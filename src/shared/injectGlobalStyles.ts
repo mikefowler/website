@@ -17,7 +17,8 @@ export default () => injectGlobal`
 
   body {
     color: ${theme.colors.text};
-    font-size: ${theme.fontSizes[3]}px;
+    font-size: ${theme.fontSizes[2]}px;
+    font-family: ${theme.fonts.serif};
     line-height: 1.58;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -28,10 +29,6 @@ export default () => injectGlobal`
     appearance: none;
     background: none;
     border: 0;
-  }
-
-  p, ol, ul {
-    font-size: ${theme.fontSizes[3]}px;
   }
 
   ol, ul {

@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'emotion-theming';
-import { graphql, StaticQuery } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
@@ -22,7 +22,7 @@ const layoutQuery = graphql`
   }
 `;
 
-const Layout: React.SFC = ({ children }) => (
+const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
   <StaticQuery query={layoutQuery}>
     {(data) => (
       <>
@@ -37,7 +37,7 @@ const Layout: React.SFC = ({ children }) => (
         </Helmet>
         <ThemeProvider theme={theme}>
           <>
-            <Header siteTitle={data.site.siteMetadata.title} />
+            <Header location={location} siteTitle={data.site.siteMetadata.title} />
             <Container>{children}</Container>
           </>
         </ThemeProvider>

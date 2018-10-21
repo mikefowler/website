@@ -1,7 +1,8 @@
-import { StaticQuery, graphql as gql } from 'gatsby';
+import { graphql as gql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Flex } from 'rebass/emotion';
 
+import { HeaderQuery as HeaderQueryInterface } from '../../typings/__generated__/HeaderQuery';
 import Box from './Box';
 import Container from './Container';
 import HeaderLink from './HeaderLink';
@@ -17,7 +18,7 @@ interface HeaderProps {
 
 const Nav = Flex.withComponent('nav');
 
-const headerQuery = gql`
+const HeaderQuery = gql`
   query HeaderQuery {
     site {
       siteMetadata {
@@ -33,11 +34,11 @@ const headerQuery = gql`
 `;
 
 const Header: React.SFC<HeaderProps> = ({ location, siteTitle }) => (
-  <StaticQuery query={headerQuery}>
-    {({ site: { siteMetadata } }) => {
-      const { navlinks } = siteMetadata.header;
+  <StaticQuery query={HeaderQuery}>
+    {(data: HeaderQueryInterface) => {
+      const { navlinks } = data.site!.siteMetadata!.header!;
 
-      const links = siteMetadata.header.navlinks.map((link: any) => (
+      const links = navlinks!.map((link: any) => (
         <Box key={link.url} flex={['unset', 1]} px={2} order={1}>
           <HeaderLink location={location} to={link.url} text={link.text} />
         </Box>
@@ -45,7 +46,7 @@ const Header: React.SFC<HeaderProps> = ({ location, siteTitle }) => (
 
       // Splice the logo into the middle of the navigation links
       links.splice(
-        Math.round(navlinks.length / 2),
+        Math.round(navlinks!.length / 2),
         0,
         <Box key="/" flex={['unset', 1]} order={[-1, 1]} px={2} width={['100%', 'auto']}>
           <Link to="/">

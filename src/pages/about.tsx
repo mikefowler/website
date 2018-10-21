@@ -8,9 +8,8 @@ import Layout from '../components/Layout';
 import Link from '../components/Link';
 import PageHeader from '../components/PageHeader';
 
-export interface AboutPageProps {
+export interface AboutPageProps extends GatsbyPage {
   data: AboutPageQueryInterface;
-  location: Location;
 }
 
 export const query = gql`

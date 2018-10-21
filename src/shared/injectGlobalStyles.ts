@@ -52,6 +52,7 @@ export default () => injectGlobal`
     text-decoration: underline;
     text-decoration-skip: ink;
     text-decoration-color: ${theme.colors.primary};
+    box-shadow: inset 0 -4px 0 ${theme.colors.violet2};
   }
 
   img {

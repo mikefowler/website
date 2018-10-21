@@ -37,6 +37,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-instagram',
+      options: {
+        username: 'michaelrfowler',
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

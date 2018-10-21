@@ -42,6 +42,7 @@ const LinkUnderline = styled.div<LinkUnderlineProps>`
 const LinkContainer = styled(Link, {
   shouldForwardProp: (prop) => !['isCurrent', 'isPartiallyCurrent'].includes(prop),
 })<LinkContainerProps>`
+  box-shadow: none;
   color: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : '')};
   cursor: ${(p) => (p.isCurrent ? 'default' : '')};
   height: 100%;
@@ -78,7 +79,7 @@ const HeaderLink: React.SFC<HeaderLinkProps> = ({ location, to, text }) => {
   return (
     <LinkContainer to={to} isCurrent={isCurrent} isPartiallyCurrent={isPartiallyCurrent}>
       <Row flexDirection="column" justifyContent="center">
-        <Column py={4}>
+        <Column py={[0, 4]}>
           <Text textAlign="center">
             <LinkText fontSize={1} fontFamily="serif">
               {text}

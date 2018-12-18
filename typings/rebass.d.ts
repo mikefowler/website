@@ -1,5 +1,5 @@
-declare module '@rebass/emotion' {
-  import { StyledComponent } from '@emotion/styled';
+declare module 'rebass' {
+  import { StyledComponent } from 'styled-components';
   import {
     BackgroundProps,
     FontSizeProps,

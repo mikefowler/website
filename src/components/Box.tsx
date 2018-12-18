@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Box as BaseBox, IBoxProps as BaseBoxProps } from '@rebass/emotion';
+import { Box as BaseBox, IBoxProps as BaseBoxProps } from 'rebass';
+import styled from 'styled-components';
 import {
   flex,
   flexBasis,
@@ -26,7 +26,7 @@ interface BoxProps
   hidden?: boolean;
 }
 
-const Box = styled(BaseBox, { shouldForwardProp: (prop) => !['order'].includes(prop) })`
+const Box = styled(BaseBox)`
   ${flex};
   ${flexBasis};
   ${flexDirection};

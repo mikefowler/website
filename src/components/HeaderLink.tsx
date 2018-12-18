@@ -1,5 +1,5 @@
-import { Text } from '@rebass/emotion';
 import * as React from 'react';
+import { Text } from 'rebass';
 
 import styled from '../shared/styled';
 import { Column, Row } from './Grid';
@@ -39,9 +39,7 @@ const LinkUnderline = styled.div<LinkUnderlineProps>`
   width: 50%;
 `;
 
-const LinkContainer = styled(Link, {
-  shouldForwardProp: (prop) => !['isCurrent', 'isPartiallyCurrent'].includes(prop),
-})<LinkContainerProps>`
+const LinkContainer = styled(Link)<LinkContainerProps>`
   box-shadow: none;
   color: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : '')};
   cursor: ${(p) => (p.isCurrent ? 'default' : '')};

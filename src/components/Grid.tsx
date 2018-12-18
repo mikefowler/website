@@ -1,4 +1,4 @@
-import { Box, Flex, GridBoxProps, GridFlexProps } from '@rebass/grid/emotion';
+import { Box, Flex, GridBoxProps, GridFlexProps } from '@rebass/grid';
 import * as React from 'react';
 
 const Row: React.SFC<GridFlexProps> = (props) => <Flex mx={-3} {...props} />;

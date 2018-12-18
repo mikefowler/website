@@ -1,14 +1,12 @@
-import { ThemeProvider } from 'emotion-theming';
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import { ThemeProvider } from 'styled-components';
 
-import injectGlobalStyles from '../shared/injectGlobalStyles';
+import GlobalStyles from '../shared/GlobalStyles';
 import theme from '../shared/theme';
 import Container from './Container';
 import Header from './Header';
-
-injectGlobalStyles();
 
 const LayoutQuery = graphql`
   query LayoutQuery {
@@ -39,6 +37,7 @@ const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
           <>
             <Header location={location} siteTitle={data.site.siteMetadata.title} />
             <Container>{children}</Container>
+            <GlobalStyles />
           </>
         </ThemeProvider>
       </>

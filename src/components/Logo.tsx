@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { Text } from '@rebass/emotion';
 import * as React from 'react';
+import { Text } from 'rebass';
+import styled from 'styled-components';
 
 import HideVisibility from './HideVisibility';
 
@@ -46,7 +46,7 @@ const Wordmark = styled.div<LogoProps>`
 `;
 
 const Logo: React.SFC<LogoProps> = ({ expanded }) => (
-  <Text fontWeight="normal" textAlign="center" fontFamily="cursive" fontSize="40">
+  <Text fontWeight="normal" textAlign="center" fontFamily="cursive" fontSize={40}>
     <Wordmark expanded={expanded}>
       <WordmarkLeft>
         M<HideVisibility>ike</HideVisibility>

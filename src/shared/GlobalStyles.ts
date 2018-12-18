@@ -1,9 +1,9 @@
-import { injectGlobal } from 'emotion';
 import { normalize } from 'polished';
+import { createGlobalStyle } from 'styled-components';
 
 import theme from './theme';
 
-export default () => injectGlobal`
+export default createGlobalStyle`
   ${normalize()}
 
   *, *::before, *::after {

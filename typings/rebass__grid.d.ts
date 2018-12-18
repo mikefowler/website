@@ -1,4 +1,4 @@
-declare module '@rebass/grid/emotion' {
+declare module '@rebass/grid' {
   import {
     SpaceProps,
     ColorProps,
@@ -12,9 +12,9 @@ declare module '@rebass/grid/emotion' {
     AlignItemsProps,
     JustifyContentProps,
   } from 'styled-system';
-  import { StyledComponent } from '@emotion/styled';
+  import { StyledComponent } from 'styled-components';
   import * as React from 'react';
-  import { Box, Flex } from '@rebass/grid/emotion';
+  import { Box, Flex } from '@rebass/grid';
 
   import Theme from '../src/shared/theme';
 

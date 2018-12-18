@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box } from '@rebass/emotion';
+import { Box } from 'rebass';
 import { HeightProps, SpaceProps, WidthProps } from 'styled-system';
 import theme from '../shared/theme';
 

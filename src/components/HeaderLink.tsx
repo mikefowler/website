@@ -1,5 +1,5 @@
+import { Text } from '@rebass/emotion';
 import * as React from 'react';
-import { Text } from 'rebass/emotion';
 
 import styled from '../shared/styled';
 import { Column, Row } from './Grid';

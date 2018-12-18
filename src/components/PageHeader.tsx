@@ -1,6 +1,6 @@
+import { Heading, Text } from '@rebass/emotion';
 import { Box, Flex } from '@rebass/grid/emotion';
 import * as React from 'react';
-import { Heading, Text } from 'rebass/emotion';
 
 import Bar from './Bar';
 

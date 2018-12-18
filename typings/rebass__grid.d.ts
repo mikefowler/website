@@ -12,7 +12,7 @@ declare module '@rebass/grid/emotion' {
     AlignItemsProps,
     JustifyContentProps,
   } from 'styled-system';
-  import { StyledComponent } from 'react-emotion';
+  import { StyledComponent } from '@emotion/styled';
   import * as React from 'react';
   import { Box, Flex } from '@rebass/grid/emotion';
 

@@ -1,6 +1,6 @@
+import { Flex } from '@rebass/emotion';
 import { graphql as gql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { Flex } from 'rebass/emotion';
 
 import { HeaderQuery as HeaderQueryInterface } from '../../typings/__generated__/HeaderQuery';
 import Box from './Box';

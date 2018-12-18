@@ -1,6 +1,5 @@
-import React from 'react';
-import styled, { StyledComponent } from 'react-emotion';
-import { Box as BaseBox, BoxProps as BaseBoxProps } from 'rebass/emotion';
+import styled from '@emotion/styled';
+import { Box as BaseBox, IBoxProps as BaseBoxProps } from '@rebass/emotion';
 import {
   flex,
   flexBasis,

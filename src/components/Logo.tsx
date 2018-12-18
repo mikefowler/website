@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
+import { Text } from '@rebass/emotion';
 import * as React from 'react';
-import styled from 'react-emotion';
-import { Text } from 'rebass/emotion';
 
 import HideVisibility from './HideVisibility';
 

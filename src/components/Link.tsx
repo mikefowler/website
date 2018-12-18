@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
+import { Link as RebassLink } from '@rebass/emotion';
 import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby';
 import * as React from 'react';
-import styled from 'react-emotion';
-import { Link as RebassLink } from 'rebass/emotion';
 
 import { themed } from '../shared/theme';
 

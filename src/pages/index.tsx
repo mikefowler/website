@@ -2,8 +2,8 @@ import { graphql as gql } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
 
+import { Text } from '@rebass/emotion';
 import { DateTime } from 'luxon';
-import { Text } from 'rebass/emotion';
 import { IndexPageQuery as IndexPageQueryInterface } from '../../typings/__generated__/IndexPageQuery';
 import { Column, Row } from '../components/Grid';
 import Layout from '../components/Layout';

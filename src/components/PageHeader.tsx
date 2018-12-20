@@ -12,8 +12,10 @@ export interface PageHeaderProps {
 const PageHeader: React.SFC<PageHeaderProps> = ({ title, subtitle }) => (
   <Box mt={6} mb={4}>
     <Flex justifyContent="center">
-      <Box width={[1, 1 / 2]}>
-        <Heading fontSize={5}>{title}</Heading>
+      <Box width={[1, 3 / 4, 1 / 2]}>
+        <Heading lineHeight={1.2} fontSize={5}>
+          {title}
+        </Heading>
         {subtitle && <Text fontSize={1}>{subtitle}</Text>}
         <Bar width={50} mt={3} />
       </Box>

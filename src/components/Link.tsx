@@ -1,28 +1,42 @@
 import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby';
 import * as React from 'react';
-import { Link as RebassLink } from 'rebass';
-import styled from 'styled-components';
+import { Link as RebassLink, LinkProps as RebassLinkProps } from 'rebass';
+import styled from '../shared/styled';
 
-import { themed } from '../shared/theme';
+interface LinkProps extends RebassLinkProps {
+  to: string;
+  inline?: boolean;
+}
 
-const LinkStyled = styled(GatsbyLink)(themed('Link'));
-const RebassLinkStyled = RebassLink.withComponent('a');
+const RebassLinkInline = styled(RebassLink)({
+  display: 'inline-block',
+});
 
-const Link: React.SFC<GatsbyLinkProps<any>> = ({ to, className, children }) => {
+const Link: React.SFC<LinkProps> = ({ to, className, children, inline, ...restProps }) => {
   const isInternalLink = /^\/(?!\/)/.test(to);
+
+  const LinkComponent = inline ? RebassLinkInline : RebassLink;
 
   if (isInternalLink) {
     return (
-      <LinkStyled className={className} to={to}>
-        {children}
-      </LinkStyled>
+      <GatsbyLink className={className} to={to}>
+        <LinkComponent as="span" {...restProps}>
+          {children}
+        </LinkComponent>
+      </GatsbyLink>
     );
   }
 
   return (
-    <RebassLinkStyled className={className} href={to} target="_blank" rel="noopener noreferrer">
+    <LinkComponent
+      {...restProps}
+      className={className}
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
-    </RebassLinkStyled>
+    </LinkComponent>
   );
 };
 

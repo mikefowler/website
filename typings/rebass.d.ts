@@ -24,7 +24,7 @@ declare module 'rebass' {
     OpacityProps,
   } from 'styled-system';
   import * as React from 'react';
-  export interface IBoxProps
+  export interface BoxProps
     extends BackgroundProps,
       ColorProps,
       FontSizeProps,
@@ -34,7 +34,7 @@ declare module 'rebass' {
     className?: string;
   }
 
-  export interface IFlexProps
+  export interface FlexProps
     extends BoxProps,
       FlexWrapProps,
       AlignItemsProps,

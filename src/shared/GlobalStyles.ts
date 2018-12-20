@@ -1,6 +1,6 @@
 import { normalize } from 'polished';
-import { createGlobalStyle } from 'styled-components';
 
+import { createGlobalStyle } from './styled';
 import theme from './theme';
 
 export default createGlobalStyle`
@@ -16,7 +16,7 @@ export default createGlobalStyle`
   }
 
   body {
-    color: ${theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
     font-size: ${theme.fontSizes[2]}px;
     font-family: ${theme.fonts.serif};
     line-height: 1.58;
@@ -52,6 +52,7 @@ export default createGlobalStyle`
     text-decoration: underline;
     text-decoration-skip: ink;
     text-decoration-color: ${theme.colors.primary};
+    transition: 0.1s box-shadow;
     box-shadow: inset 0 -4px 0 ${theme.colors.violet2};
   }
 

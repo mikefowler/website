@@ -32,6 +32,29 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/src/essays`,
+        name: 'essays',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-collections`,
+      options: {
+        permalink: ':collection/:title',
+        collections: [
+          {
+            name: 'writing',
+            path: `src/essays`,
+            paginate: {
+              perPage: 10,
+              layout: 'EssayPage',
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/src/images`,
         name: 'images',
       },

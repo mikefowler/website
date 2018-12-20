@@ -6,10 +6,16 @@ import theme from '../shared/theme';
 
 export interface BarProps extends SpaceProps, WidthProps, HeightProps {
   color?: typeof theme['colors'];
+  inline?: boolean;
 }
 
-const Bar: React.SFC<BarProps> = ({ color = theme.colors.gray2, height = 2, ...restProps }) => (
-  <Box bg={color} css={{ height }} {...restProps} />
+const Bar: React.SFC<BarProps> = ({
+  color = theme.colors.gray2,
+  inline,
+  height = 2,
+  ...restProps
+}) => (
+  <Box bg={color} css={{ height, display: inline ? 'inline-block' : 'block' }} {...restProps} />
 );
 
 export default Bar;

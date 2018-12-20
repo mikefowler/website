@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../shared/GlobalStyles';
 import theme from '../shared/theme';
 import Container from './Container';
+import Footer from './Footer';
 import Header from './Header';
 
 const LayoutQuery = graphql`
@@ -37,6 +38,7 @@ const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
           <>
             <Header location={location} siteTitle={data.site.siteMetadata.title} />
             <Container>{children}</Container>
+            <Footer />
             <GlobalStyles />
           </>
         </ThemeProvider>

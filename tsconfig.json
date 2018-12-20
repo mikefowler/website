@@ -1,6 +1,6 @@
 {
   "include": ["./src/**/*", "./typings/**/*"],
-  "files": ["./typings/**.d.ts"],
+  "files": ["./typings/**/*"],
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",

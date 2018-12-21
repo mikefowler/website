@@ -1,7 +1,8 @@
 import { graphql as gql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
 
+import idx from 'idx';
 import { DateTime } from 'luxon';
 import { Text } from 'rebass';
 import { IndexPageQuery as IndexPageQueryInterface } from '../../typings/__generated__/IndexPageQuery';
@@ -31,15 +32,27 @@ export const query = gql`
   }
 `;
 
+function getImage(props: IndexPageQueryInterface) {
+  return idx(props, (_) => _.images.edges[0].node);
+}
+
+function getImageMeta(props: IndexPageQueryInterface) {
+  return idx(props, (_) => _.images.edges[0].node.localFile.childImageSharp.fluid) as FluidObject;
+}
+
+function getTimestamp(props: IndexPageQueryInterface) {
+  return idx(props, (_) => _.images.edges[0].node.timestamp) as number;
+}
+
 const IndexPage: React.SFC<IndexPageProps> = ({ data, location }) => {
-  const image = data.images!.edges![0]!.node!;
-  const date = DateTime.fromMillis(image!.timestamp! * 1000);
+  const image = getImage(data);
+  const date = DateTime.fromMillis(getTimestamp(data) * 1000);
 
   return (
     <Layout location={location}>
       <Row justifyContent="center" mt={4}>
         <Column width={[1, 3 / 4]} flex="0 1 auto">
-          <Img fluid={image.localFile!.childImageSharp!.fluid!} />
+          <Img fluid={getImageMeta(data)} />
           <Text mt={3} fontSize={1} textAlign="center">
             {date.toFormat('MMMM d, y')}
           </Text>

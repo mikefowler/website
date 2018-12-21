@@ -38,6 +38,7 @@
     "gatsby-source-instagram": "^0.2.0",
     "gatsby-transformer-remark": "^2.1.17",
     "gatsby-transformer-sharp": "^2.1.9",
+    "idx": "^2.5.2",
     "luxon": "^1.8.2",
     "modular-scale": "^5.1.0",
     "palx": "^1.0.3",

@@ -1,8 +1,12 @@
 import { graphql as gql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
+import idx from 'idx';
 import * as React from 'react';
 
-import { AboutPageQuery as AboutPageQueryInterface } from '../../typings/__generated__/AboutPageQuery';
+import {
+  AboutPageQuery as AboutPageQueryInterface,
+  AboutPageQuery_image_childImageSharp_fluid,
+} from '../../typings/__generated__/AboutPageQuery';
 import { Column, Row } from '../components/Grid';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -32,6 +36,14 @@ export const query = gql`
   }
 `;
 
+function getImage(props: AboutPageQueryInterface) {
+  return idx(props, (_) => _.image.childImageSharp.fluid) as FluidObject;
+}
+
+function getEmail(props: AboutPageQueryInterface) {
+  return idx(props, (_) => _.site.siteMetadata.author.email) as string;
+}
+
 const AboutPage: React.SFC<AboutPageProps> = ({ data, location }) => (
   <Layout location={location}>
     <PageHeader title="About" subtitle="Biography and contact information" />
@@ -48,12 +60,11 @@ const AboutPage: React.SFC<AboutPageProps> = ({ data, location }) => (
           <Link to="https://www.airbnb.com/experiences">Airbnb Experiences</Link>.
         </p>
         <p>
-          You can get in touch with me{' '}
-          <Link to={`mailto:${data.site!.siteMetadata!.author!.email}`}>via email</Link>.
+          You can get in touch with me <Link to={`mailto:${getEmail(data)}`}>via email</Link>.
         </p>
       </Column>
       <Column width={[1, 1 / 2]} mb={4} order={[-1, 'unset']}>
-        <Img fluid={data.image!.childImageSharp!.fluid!} />
+        <Img fluid={getImage(data)} />
       </Column>
     </Row>
   </Layout>

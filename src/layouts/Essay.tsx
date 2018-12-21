@@ -1,5 +1,6 @@
 import { Box, Flex } from '@rebass/grid';
 import { graphql as gql } from 'gatsby';
+import idx from 'idx';
 import * as React from 'react';
 import { Heading } from 'rebass';
 
@@ -35,14 +36,39 @@ export const query = gql`
   }
 `;
 
+// TODO replace with generated interface
+interface EssayTemplateQueryInterface {
+  markdownRemark: {
+    html: string;
+    frontmatter: {
+      title: string | null;
+    };
+    fields: {
+      slug: string | null;
+    };
+  };
+}
+
+function getPost(props: EssayTemplateQueryInterface) {
+  return idx(props, (_) => _.markdownRemark) as EssayTemplateQueryInterface['markdownRemark'];
+}
+
+function getTitle(props: EssayTemplateQueryInterface) {
+  return idx(props, (_) => _.markdownRemark.frontmatter.title) as string;
+}
+
+function getSlug(props: EssayTemplateQueryInterface) {
+  return idx(props, (_) => _.markdownRemark.fields.slug) as string;
+}
+
 export interface EssayTemplateProps extends GatsbyPage {
   data?: any;
 }
 
 const EssayTemplate: React.SFC<EssayTemplateProps> = ({ data, location }) => {
-  const post = data!.markdownRemark;
-  const title = post!.frontmatter!.title;
-  const slug = post!.fields!.slug;
+  const post = getPost(data);
+  const title = getTitle(data);
+  const slug = getSlug(data);
 
   return (
     <Layout location={location}>
@@ -57,7 +83,7 @@ const EssayTemplate: React.SFC<EssayTemplateProps> = ({ data, location }) => {
         <Flex justifyContent="center">
           <Box width={[1, 3 / 4, 1 / 2]} mt={4}>
             <Formatted>
-              <div dangerouslySetInnerHTML={{ __html: post!.html! }} />
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
             </Formatted>
           </Box>
         </Flex>

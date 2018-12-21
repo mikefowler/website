@@ -2,7 +2,11 @@ import { graphql as gql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Flex } from 'rebass';
 
-import { HeaderQuery as HeaderQueryInterface } from '../../typings/__generated__/HeaderQuery';
+import idx from 'idx';
+import {
+  HeaderQuery as HeaderQueryInterface,
+  HeaderQuery_site_siteMetadata_header_navlinks,
+} from '../../typings/__generated__/HeaderQuery';
 import Box from './Box';
 import Container from './Container';
 import HeaderLink from './HeaderLink';
@@ -33,20 +37,27 @@ const HeaderQuery = gql`
   }
 `;
 
+function getNavlinks(props: HeaderQueryInterface) {
+  return idx(
+    props,
+    (_) => _.site.siteMetadata.header.navlinks,
+  ) as HeaderQuery_site_siteMetadata_header_navlinks[];
+}
+
 const Header: React.SFC<HeaderProps> = ({ location, siteTitle }) => (
   <StaticQuery query={HeaderQuery}>
     {(data: HeaderQueryInterface) => {
-      const { navlinks } = data.site!.siteMetadata!.header!;
+      const navlinks = getNavlinks(data);
 
-      const links = navlinks!.map((link: any) => (
-        <Box key={link.url} flex={['unset', 1]} px={2} order={1}>
-          <HeaderLink location={location} to={link.url} text={link.text} />
+      const links = navlinks.map((link) => (
+        <Box key={link.url as string} flex={['unset', 1]} px={2} order={1}>
+          <HeaderLink location={location} to={link.url as string} text={link.text as string} />
         </Box>
       ));
 
       // Splice the logo into the middle of the navigation links
       links.splice(
-        Math.round(navlinks!.length / 2),
+        Math.round(navlinks.length / 2),
         0,
         <Box key="/" flex={['unset', 1]} order={[-1, 1]} px={2} width={['100%', 'auto']}>
           <Link to="/">

@@ -4,6 +4,7 @@ import idx from 'idx';
 import * as React from 'react';
 import { Heading } from 'rebass';
 
+import { EssayTemplateQuery } from '../../typings/__generated__/EssayTemplateQuery';
 import Formatted from '../components/Formatted';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -36,28 +37,15 @@ export const query = gql`
   }
 `;
 
-// TODO replace with generated interface
-interface EssayTemplateQueryInterface {
-  markdownRemark: {
-    html: string;
-    frontmatter: {
-      title: string | null;
-    };
-    fields: {
-      slug: string | null;
-    };
-  };
+function getPost(props: EssayTemplateQuery) {
+  return idx(props, (_) => _.markdownRemark);
 }
 
-function getPost(props: EssayTemplateQueryInterface) {
-  return idx(props, (_) => _.markdownRemark) as EssayTemplateQueryInterface['markdownRemark'];
-}
-
-function getTitle(props: EssayTemplateQueryInterface) {
+function getTitle(props: EssayTemplateQuery) {
   return idx(props, (_) => _.markdownRemark.frontmatter.title) as string;
 }
 
-function getSlug(props: EssayTemplateQueryInterface) {
+function getSlug(props: EssayTemplateQuery) {
   return idx(props, (_) => _.markdownRemark.fields.slug) as string;
 }
 
@@ -83,7 +71,7 @@ const EssayTemplate: React.SFC<EssayTemplateProps> = ({ data, location }) => {
         <Flex justifyContent="center">
           <Box width={[1, 3 / 4, 1 / 2]} mt={4}>
             <Formatted>
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              <div dangerouslySetInnerHTML={{ __html: post!.html }} />
             </Formatted>
           </Box>
         </Flex>

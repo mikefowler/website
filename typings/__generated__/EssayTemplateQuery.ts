@@ -24,10 +24,15 @@ export interface EssayTemplateQuery_markdownRemark_frontmatter {
   title: string | null;
 }
 
+export interface EssayTemplateQuery_markdownRemark_fields {
+  slug: string | null;
+}
+
 export interface EssayTemplateQuery_markdownRemark {
   html: string | null;
   excerpt: string | null;
   frontmatter: EssayTemplateQuery_markdownRemark_frontmatter | null;
+  fields: EssayTemplateQuery_markdownRemark_fields | null;
 }
 
 export interface EssayTemplateQuery {

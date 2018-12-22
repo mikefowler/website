@@ -13,12 +13,13 @@
     "lint": "tslint --project .",
     "apollo": "npm run apollo:download-schema && npm run apollo:generate-types:watch",
     "apollo:download-schema": "apollo schema:download --endpoint=http://localhost:8000/___graphql schema.json",
-    "apollo:generate-types": "apollo codegen:generate --schema=schema.json --output-flat --target=typescript --queries='./src/**/*.{ts,tsx}' --tagName=gql",
+    "apollo:generate-types": "apollo codegen:generate ./typings/__generated__ --outputFlat --schema=schema.json --target=typescript --queries='./src/**/*.{ts,tsx}' --tagName=gql",
     "apollo:generate-types:watch": "npm run generate-types -- --watch"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@rebass/grid": "^6.0.0-7",
+    "core-js": "^2.6.1",
     "gatsby": "^2.0.70",
     "gatsby-image": "^2.0.25",
     "gatsby-plugin-collections": "^0.1.1",

@@ -1,6 +1,6 @@
 import { Box } from '@rebass/grid';
 import { graphql as gql } from 'gatsby';
-import { GatsbyCollectionPaginationLayoutContext } from 'gatsby-plugin-collections';
+import { GatsbyCollectionPaginationContextProp } from 'gatsby-plugin-collections';
 import idx from 'idx';
 import React from 'react';
 
@@ -42,13 +42,14 @@ function getJournals(props: JournalsQuery) {
   return idx(props, (_) => _.journals.edges) as JournalsQuery_journals_edges[];
 }
 
-interface JournalsIndexProps {
+interface JournalsIndexProps extends GatsbyPage {
   data: JournalsQuery;
-  pageContext: GatsbyCollectionPaginationLayoutContext;
+  pageContext: GatsbyCollectionPaginationContextProp;
 }
 
 const JournalsIndex: React.SFC<JournalsIndexProps> = ({
   data,
+  location,
   pageContext: { nextPage, previousPage, slugs },
 }) => (
   <Layout location={location}>

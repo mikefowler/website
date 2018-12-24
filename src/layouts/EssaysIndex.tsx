@@ -37,13 +37,14 @@ function getEssays(props: EssaysQuery) {
   return idx(props, (_) => _.essays.edges) as EssaysQuery_essays_edges[];
 }
 
-interface EssaysIndexProps {
+interface EssaysIndexProps extends GatsbyPage {
   data: EssaysQuery;
   pageContext: GatsbyCollectionPaginationLayoutContext;
 }
 
 const EssaysIndex: React.SFC<EssaysIndexProps> = ({
   data,
+  location,
   pageContext: { nextPage, previousPage },
 }) => (
   <Layout location={location}>

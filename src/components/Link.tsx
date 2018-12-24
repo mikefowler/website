@@ -32,6 +32,7 @@ const Link: React.SFC<LinkProps> = ({ tabIndex, to, children, inline, ...restPro
   };
 
   return (
+    // @ts-ignore
     <Anchor to={to} {...linkProps} {...restProps}>
       {children}
     </Anchor>

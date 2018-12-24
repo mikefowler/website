@@ -10,7 +10,7 @@ redirect_from:
 
 Version 3.2 of SASS adds this incredibly helpful piece of functionality: the ability to pass @content blocks to a mixin. What do I mean by passing content to a mixin? We can already pass in parameters, isn't that the same thing? Not quite. Consider the following example, as elegantly illustrated by Chris Eppstein in a Gist from several months ago.
 
-`gist:mikefowler/1215856#6_media_queries.scss`
+`gist:chriseppstein/1215856#6_media_queries.scss`
 
 What if we could easily keep our responsive media style rules grouped with the content it defines rules for, but not clutter our file with @media rules? Say, by doing something like this:
 

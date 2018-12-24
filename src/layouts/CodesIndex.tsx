@@ -1,6 +1,6 @@
 import { Box, Flex } from '@rebass/grid';
 import { graphql as gql } from 'gatsby';
-import { GatsbyCollectionPaginationLayoutContext } from 'gatsby-plugin-collections';
+import { GatsbyCollectionPaginationContextProp } from 'gatsby-plugin-collections';
 import idx from 'idx';
 import React from 'react';
 
@@ -37,13 +37,14 @@ function getCodes(props: CodesQuery) {
   return idx(props, (_) => _.codes.edges) as CodesQuery_codes_edges[];
 }
 
-interface CodesIndexProps {
+interface CodesIndexProps extends GatsbyPage {
   data: CodesQuery;
-  pageContext: GatsbyCollectionPaginationLayoutContext;
+  pageContext: GatsbyCollectionPaginationContextProp;
 }
 
 const CodesIndex: React.SFC<CodesIndexProps> = ({
   data,
+  location,
   pageContext: { nextPage, previousPage },
 }) => (
   <Layout location={location}>

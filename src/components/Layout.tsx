@@ -37,7 +37,7 @@ const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
         <ThemeProvider theme={theme}>
           <>
             <Header location={location} siteTitle={data.site.siteMetadata.title} />
-            <Container>{children}</Container>
+            <Container as="main">{children}</Container>
             <Footer />
             <GlobalStyles />
           </>

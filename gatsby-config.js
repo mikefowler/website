@@ -43,6 +43,14 @@ module.exports = {
         name: 'code',
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/journal`,
+        name: 'journal',
+      },
+    },
+    {
       resolve: `gatsby-plugin-collections`,
       options: {
         permalink: ':collection/:title',
@@ -63,6 +71,15 @@ module.exports = {
             paginate: {
               perPage: 10,
               layout: 'CodesIndex',
+            },
+          },
+          {
+            name: 'journal',
+            path: `${__dirname}/src/journal`,
+            permalink: 'pretty',
+            paginate: {
+              perPage: 10,
+              layout: 'JournalsIndex',
             },
           },
         ],

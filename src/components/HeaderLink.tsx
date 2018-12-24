@@ -1,8 +1,8 @@
+import { Box, Flex } from '@rebass/grid';
 import * as React from 'react';
 import { Text } from 'rebass';
 
 import styled from '../shared/styled';
-import { Column, Row } from './Grid';
 import Link from './Link';
 
 export interface HeaderLinkProps {
@@ -60,8 +60,7 @@ const LinkContainer = styled(Link)<LinkContainerProps>`
 
   &:hover,
   &:focus {
-    color: ${(p) =>
-      p.isCurrent || p.isPartiallyCurrent ? p.theme.colors.primary : p.theme.colors.gray8};
+    color: ${(p) => (p.isCurrent || p.isPartiallyCurrent ? '' : p.theme.colors.gray8)};
 
     ${LinkUnderline} {
       opacity: 1;
@@ -76,16 +75,16 @@ const HeaderLink: React.SFC<HeaderLinkProps> = ({ location, to, text }) => {
 
   return (
     <LinkContainer to={to} isCurrent={isCurrent} isPartiallyCurrent={isPartiallyCurrent}>
-      <Row flexDirection="column" justifyContent="center">
-        <Column py={[0, 4]}>
-          <Text textAlign="center">
-            <LinkText fontSize={1} fontFamily="serif">
+      <Flex flexDirection="column" justifyContent="center">
+        <Box py={[0, 4]}>
+          <Text fontSize={1} textAlign="center">
+            <LinkText fontFamily="serif">
               {text}
               <LinkUnderline active={isCurrent || isPartiallyCurrent} />
             </LinkText>
           </Text>
-        </Column>
-      </Row>
+        </Box>
+      </Flex>
     </LinkContainer>
   );
 };

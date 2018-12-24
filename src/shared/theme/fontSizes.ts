@@ -1,8 +1,8 @@
-import ModularScale from 'modular-scale';
+import ModularScale, { ratios } from 'modular-scale';
 
 const ms = ModularScale({
   base: 20,
-  ratio: ModularScale.ratios.minorThird,
+  ratio: ratios.majorThird,
 });
 
 const fontSizes = Array(8)

@@ -1,7 +1,6 @@
 ---
 title: On Beginnings
 excerpt: On Friday I left my apartment. Moved out. It was a hard decision to leave that place, a home I spent two incredible years living in.
-layout: essay
 ---
 
 _To hear this essay read aloud, check out [An Irrevocable Condition](/an-irrevocable-condition)_.

@@ -63,7 +63,7 @@ const EssayTemplate: React.SFC<EssayTemplateProps> = ({ data, location }) => {
       <Box mt={6} mb={4}>
         <Flex justifyContent="center">
           <Box width={[1, 3 / 4, 1 / 2]}>
-            <Heading lineHeight={1.2} fontSize={5}>
+            <Heading lineHeight={1.2}>
               <Link to={slug}>{title}</Link>
             </Heading>
           </Box>

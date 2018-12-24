@@ -13,7 +13,7 @@ const PageHeader: React.SFC<PageHeaderProps> = ({ title, subtitle }) => (
   <Box mt={6} mb={4}>
     <Flex justifyContent="center">
       <Box width={[1, 3 / 4, 1 / 2]}>
-        <Heading lineHeight={1.2} fontSize={5}>
+        <Heading as="h2" lineHeight={1.2}>
           {title}
         </Heading>
         {subtitle && <Text fontSize={1}>{subtitle}</Text>}

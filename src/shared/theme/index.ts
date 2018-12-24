@@ -5,7 +5,7 @@ import fontSizes from './fontSizes';
 export const themed = (key: string) => (props: any) => props.theme[key];
 
 export interface ThemeInterface {
-  colors: Colors;
+  colors: typeof colors;
   fontSizes: number[];
   fonts: typeof fonts;
   easings: {

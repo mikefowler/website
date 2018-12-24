@@ -9,30 +9,13 @@ interface PaginationProps {
 }
 
 const Pagination: React.SFC<PaginationProps> = ({ previousLink, nextLink }) => (
-  <>
-    {!!previousLink ? (
-      <Link fontSize={1} to={previousLink}>
-        Previous
-      </Link>
-    ) : (
-      <Text as="span" fontSize={1}>
-        Previous
-      </Text>
-    )}
-    <Text fontSize={1} as="span">
-      {' '}
-      /{' '}
-    </Text>
-    {!!nextLink ? (
-      <Link fontSize={1} to={nextLink}>
-        Next
-      </Link>
-    ) : (
-      <Text as="span" fontSize={1}>
-        Next
-      </Text>
-    )}
-  </>
+  <Flex justifyContent="center">
+    <Box>
+      {!!previousLink ? <Link to={previousLink}>Previous</Link> : <Text as="span">Previous</Text>}
+    </Box>
+    <Text as="span"> / </Text>
+    <Box>{!!nextLink ? <Link to={nextLink}>Next</Link> : <Text as="span">Next</Text>}</Box>
+  </Flex>
 );
 
 export default Pagination;

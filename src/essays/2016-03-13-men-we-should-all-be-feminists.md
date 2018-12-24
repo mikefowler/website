@@ -1,7 +1,6 @@
 ---
 title: 'Men, we should all be feminists'
 excerpt: A personal appeal to my male friends
-layout: essay
 ---
 
 Until I moved to San Francisco, I thought very little about gender. Not in a malicious way, as if I’d made a conscious effort to ignore the statistical differences in treatment of men and women, or turned a blind eye to the almost daily news stories about campus rape. Retrospectively, I view it as the type of naive ignorance that leads a person to state “I’m not racist” but say nothing when their friend makes a demonstrably racist joke.

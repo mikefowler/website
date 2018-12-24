@@ -1,9 +1,9 @@
 declare module 'palx' {
   import * as palx from 'palx';
 
-  export interface PalxOptions {}
+  export default function palx(hex: string, options?: {}): PalxPalette;
 
-  export type PalxPalette = {
+  export interface PalxPalette {
     [name: string]: string | string[];
     base: string;
     black: string;
@@ -20,7 +20,5 @@ declare module 'palx' {
     teal: string[];
     violet: string[];
     yellow: string[];
-  };
-
-  export default function palx(hex: string, options?: PalxOptions): PalxPalette;
+  }
 }

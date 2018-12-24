@@ -1,13 +1,12 @@
+import { Box, Flex } from '@rebass/grid';
 import { graphql as gql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { Flex } from 'rebass';
 
 import idx from 'idx';
 import {
   HeaderQuery as HeaderQueryInterface,
   HeaderQuery_site_siteMetadata_header_navlinks,
 } from '../../typings/__generated__/HeaderQuery';
-import Box from './Box';
 import Container from './Container';
 import HeaderLink from './HeaderLink';
 import HideFromScreenReaders from './HideFromScreenReaders';
@@ -19,8 +18,6 @@ interface HeaderProps {
   location: Location;
   siteTitle: string;
 }
-
-const Nav = Flex.withComponent('nav');
 
 const HeaderQuery = gql`
   query HeaderQuery {
@@ -60,28 +57,26 @@ const Header: React.SFC<HeaderProps> = ({ location, siteTitle }) => (
         Math.round(navlinks.length / 2),
         0,
         <Box key="/" flex={['unset', 1]} order={[-1, 1]} px={2} width={['100%', 'auto']}>
-          <Link to="/">
-            <Box py={2}>
-              <HideVisually>Home</HideVisually>
-              <HideFromScreenReaders>
-                <Logo />
-              </HideFromScreenReaders>
-            </Box>
+          <Link to="/" tabIndex={1}>
+            <HideVisually>Home</HideVisually>
+            <HideFromScreenReaders>
+              <Logo expanded={location.pathname === '/'} />
+            </HideFromScreenReaders>
           </Link>
         </Box>,
       );
 
       return (
-        <header>
-          <Container>
-            <HideVisually>
-              <h1>{siteTitle}</h1>
-            </HideVisually>
-            <Nav alignItems="center" justifyContent="center" flexWrap="wrap">
+        <Container as="header">
+          <HideVisually>
+            <h1>{siteTitle}</h1>
+          </HideVisually>
+          <Box as="nav">
+            <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
               {links}
-            </Nav>
-          </Container>
-        </header>
+            </Flex>
+          </Box>
+        </Container>
       );
     }}
   </StaticQuery>

@@ -1,41 +1,43 @@
 declare module 'modular-scale' {
-  export interface ModularScaleOptions {
-    /** The ratio to use in the generated type scale function */
-    ratio?: ModularScaleRatio;
+  // Type definitions for modular-scale 5.1
+  // Project: https://github.com/kristoferjoseph/modular-scale
+  // Definitions by: Mike Fowler <https://github.com/mikefowler>
+  // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-    /** The base font size (in pixels) to use for the type scale */
+  export interface ModularScaleOptions {
+    /** The ratio to use in the generated type scale function. Defaults to ModularScaleRatio.goldenSection */
+    ratio?: number;
+
+    /** The base font size (in pixels) to use for the type scale. Defaults to 16 */
     base?: number;
   }
 
-  declare function ms(step: number, relative?: boolean): number;
-
-  declare namespace ms {
-    declare function steps(steps: number, relative?: boolean): number[];
+  export interface ModularScaleRatio {
+    minorSecond: number;
+    majorSecond: number;
+    minorThird: number;
+    majorThird: number;
+    perfectFourth: number;
+    augFourth: number;
+    perfectFifth: number;
+    minorSixth: number;
+    goldenSection: number;
+    majorSixth: number;
+    minorSeventh: number;
+    majorSeventh: number;
+    octave: number;
+    majorTenth: number;
+    majorEleventh: number;
+    majorTwelfth: number;
+    doubleOctave: number;
   }
 
-  declare function ModularScale(options: ModularScaleOptions): typeof ms;
-
-  export default ModularScale;
-
-  declare namespace ModularScale {
-    declare const ratios = {
-      minorSecond = 1.067,
-      majorSecond = 1.125,
-      minorThird = 1.2,
-      majorThird = 1.25,
-      perfectFourth = 1.333,
-      augFourth = 1.414,
-      perfectFifth = 1.5,
-      minorSixth = 1.6,
-      goldenSection = 1.618,
-      majorSixth = 1.667,
-      minorSeventh = 1.778,
-      majorSeventh = 1.875,
-      octave = 2,
-      majorTenth = 2.5,
-      majorEleventh = 2.667,
-      majorTwelfth = 3,
-      doubleOctave = 4,
-    };
+  export interface modularScale {
+    (step: number, relative?: boolean): number;
+    steps(steps: number, relative?: boolean): number[];
   }
+
+  export const ratios: ModularScaleRatio;
+
+  export default function ModularScale(options: ModularScaleOptions): modularScale;
 }

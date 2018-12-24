@@ -26,7 +26,7 @@ declare module '@rebass/grid' {
       FlexProps,
       OrderProps,
       AlignSelfProps {
-    is?: string;
+    as?: string;
   }
 
   export interface GridFlexProps

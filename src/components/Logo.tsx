@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text } from 'rebass';
-import styled from 'styled-components';
 
+import styled from '../shared/styled';
+import { ThemeInterface } from '../shared/theme';
 import HideVisibility from './HideVisibility';
 
 export interface LogoProps {
@@ -24,23 +25,29 @@ const WordmarkRight = styled.span`
   opacity: 0;
 `;
 
+const wordmarkExpandedStyles = (theme: ThemeInterface) => `
+  color: ${theme.colors.primary};
+
+  ${WordmarkLeft} {
+    transform: translateX(0);
+  }
+
+  ${WordmarkRight} {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
 const Wordmark = styled.div<LogoProps>`
   position: relative;
   color: ${({ theme }) => theme.colors.text};
   transition: 0.2s color;
 
+  ${(p) => (p.expanded ? wordmarkExpandedStyles(p.theme) : '')}
+
   @media (hover: hover) {
     &:hover {
-      color: ${({ theme }) => theme.colors.primary};
-
-      ${WordmarkLeft} {
-        transform: translateX(0);
-      }
-
-      ${WordmarkRight} {
-        transform: translateX(0);
-        opacity: 1;
-      }
+      ${({ theme }) => wordmarkExpandedStyles(theme)}
     }
   }
 `;

@@ -1,42 +1,40 @@
-import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import * as React from 'react';
-import { Link as RebassLink, LinkProps as RebassLinkProps } from 'rebass';
+import { BoxProps } from 'rebass';
+import { alignSelf, color, flex, fontSize, order, space, width } from 'styled-system';
+
 import styled from '../shared/styled';
 
-interface LinkProps extends RebassLinkProps {
+interface LinkProps extends BoxProps {
   to: string;
   inline?: boolean;
+  tabIndex?: number;
 }
 
-const RebassLinkInline = styled(RebassLink)({
-  display: 'inline-block',
-});
+const Anchor = styled(GatsbyLink)`
+  ${space}
+  ${width}
+  ${fontSize}
+  ${color}
+  ${flex}
+  ${order}
+  ${alignSelf}
+`;
 
-const Link: React.SFC<LinkProps> = ({ to, className, children, inline, ...restProps }) => {
+const Link: React.SFC<LinkProps> = ({ tabIndex, to, children, inline, ...restProps }) => {
+  /** Is the `to` prop an external link? */
   const isInternalLink = /^\/(?!\/)/.test(to);
 
-  const LinkComponent = inline ? RebassLinkInline : RebassLink;
-
-  if (isInternalLink) {
-    return (
-      <GatsbyLink className={className} to={to}>
-        <LinkComponent as="span" {...restProps}>
-          {children}
-        </LinkComponent>
-      </GatsbyLink>
-    );
-  }
+  const linkProps = {
+    tabIndex,
+    target: !isInternalLink ? '_blank' : undefined,
+    rel: !isInternalLink ? 'noopener noreferrer' : undefined,
+  };
 
   return (
-    <LinkComponent
-      {...restProps}
-      className={className}
-      href={to}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <Anchor to={to} {...linkProps} {...restProps}>
       {children}
-    </LinkComponent>
+    </Anchor>
   );
 };
 

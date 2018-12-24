@@ -44,9 +44,10 @@ module.exports = {
           {
             name: 'writing',
             path: `src/essays`,
+            layout: 'Essay',
             paginate: {
               perPage: 10,
-              layout: 'EssayPage',
+              layout: 'EssaysIndex',
             },
           },
         ],
@@ -73,6 +74,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
+              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
           {
@@ -81,6 +84,9 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          'gatsby-remark-unwrap-images',
+          'gatsby-remark-external-links',
+          'gatsby-remark-embed-gist',
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',

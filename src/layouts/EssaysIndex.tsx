@@ -1,17 +1,25 @@
 import { Box, Flex } from '@rebass/grid';
 import { graphql as gql } from 'gatsby';
+import { GatsbyCollectionPaginationLayoutContext } from 'gatsby-plugin-collections';
+import idx from 'idx';
 import React from 'react';
 
+import { EssaysQuery, EssaysQuery_essays_edges } from '../../typings/__generated__/EssaysQuery';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 import PageHeader from '../components/PageHeader';
 import Pagination from '../components/Pagination';
 
 export const query = gql`
-  query EssayPageQuery($ids: [String!]!) {
-    essays: allMarkdownRemark(filter: { id: { in: $ids } }) {
+  query EssaysQuery($slugs: [String!]!) {
+    essays: allMarkdownRemark(
+      filter: { fields: { slug: { in: $slugs } } }
+      sort: { fields: [fields___date], order: DESC }
+    ) {
       edges {
         node {
+          id
+
           frontmatter {
             title
           }
@@ -25,12 +33,16 @@ export const query = gql`
   }
 `;
 
-interface EssaysLayoutProps {
-  data: any;
+function getEssays(props: EssaysQuery) {
+  return idx(props, (_) => _.essays.edges) as EssaysQuery_essays_edges[];
+}
+
+interface EssaysIndexProps {
+  data: EssaysQuery;
   pageContext: GatsbyCollectionPaginationLayoutContext;
 }
 
-const EssaysLayout: React.SFC<EssaysLayoutProps> = ({
+const EssaysIndex: React.SFC<EssaysIndexProps> = ({
   data,
   pageContext: { nextPage, previousPage },
 }) => (
@@ -39,9 +51,9 @@ const EssaysLayout: React.SFC<EssaysLayoutProps> = ({
     <Flex justifyContent="center">
       <Box width={[1, 3 / 4, 1 / 2]}>
         <ul>
-          {data.essays.edges.map(({ node }: any) => (
-            <li key={node.id}>
-              <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+          {getEssays(data).map(({ node }) => (
+            <li key={node!.id!}>
+              <Link to={node!.fields!.slug!}>{node!.frontmatter!.title}</Link>
             </li>
           ))}
         </ul>
@@ -53,4 +65,4 @@ const EssaysLayout: React.SFC<EssaysLayoutProps> = ({
   </Layout>
 );
 
-export default EssaysLayout;
+export default EssaysIndex;

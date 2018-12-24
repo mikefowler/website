@@ -1,3 +1,4 @@
+import { Box, Flex } from '@rebass/grid';
 import { graphql as gql } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
@@ -6,7 +7,6 @@ import idx from 'idx';
 import { DateTime } from 'luxon';
 import { Text } from 'rebass';
 import { IndexPageQuery as IndexPageQueryInterface } from '../../typings/__generated__/IndexPageQuery';
-import { Column, Row } from '../components/Grid';
 import Layout from '../components/Layout';
 
 export interface IndexPageProps extends GatsbyPage {
@@ -21,7 +21,7 @@ export const query = gql`
           timestamp
           localFile {
             childImageSharp {
-              fluid(maxWidth: 800) {
+              fluid(maxHeight: 600) {
                 ...ImageFluid
               }
             }
@@ -50,14 +50,14 @@ const IndexPage: React.SFC<IndexPageProps> = ({ data, location }) => {
 
   return (
     <Layout location={location}>
-      <Row justifyContent="center" mt={4}>
-        <Column width={[1, 3 / 4]} flex="0 1 auto">
+      <Flex justifyContent="center" mt={4}>
+        <Box width={[1, 3 / 4]} flex="0 1 auto">
           <Img fluid={getImageMeta(data)} />
-          <Text mt={3} fontSize={1} textAlign="center">
+          <Text mt={3} textAlign="center">
             {date.toFormat('MMMM d, y')}
           </Text>
-        </Column>
-      </Row>
+        </Box>
+      </Flex>
     </Layout>
   );
 };

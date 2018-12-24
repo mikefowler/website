@@ -8,6 +8,10 @@ const Formatted = styled.div`
     margin-bottom: 2rem;
   }
 
+  a.gatsby-resp-image-link {
+    box-shadow: none;
+  }
+
   hr {
     box-sizing: border-box;
     height: initial;

@@ -1,7 +1,6 @@
 ---
 title: To Share a City
 excerpt: How do you define "city"? Could the wilderness be considered a city?
-layout: essay
 ---
 
 _To hear this essay read aloud, check out [An Irrevocable Condition](/an-irrevocable-condition)_.

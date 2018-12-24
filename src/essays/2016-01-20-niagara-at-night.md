@@ -1,10 +1,9 @@
 ---
 title: Niagara at night
-excerpt: In June 2012, Robert Haverly and I drove from Vermont to Fort Collins, Colorado in two days.
-layout: essay
+excerpt: In June 2012, Rob and I drove from Vermont to Fort Collins, Colorado in two days.
 ---
 
-In June 2012, [Robert Haverly](http://roberthaverly.com/) and I drove from Vermont to Fort Collins, Colorado in two days. We cut west across New York and then south through Ohio, passing through each of its major cities: Cleveland to Columbus to Cincinnati. We made a brief detour into Kentucky, stopping in Slade with aspirations of bouldering at Red River Gorge and therein discovering that energy levels are prohibitively depleted by driving 15 hours unbroken through the night. After that came 1200 miles of baking asphalt, ripping down I-70, chasing the sun across Kansas and into Colorado, stopping only once to sleep for four hours at a campground in Indiana, an excursion which won us the company of an upsetting number of ticks which we found on our clothes and gear.
+In June 2012, Rob and I drove from Vermont to Fort Collins, Colorado in two days. We cut west across New York and then south through Ohio, passing through each of its major cities: Cleveland to Columbus to Cincinnati. We made a brief detour into Kentucky, stopping in Slade with aspirations of bouldering at Red River Gorge and therein discovering that energy levels are prohibitively depleted by driving 15 hours unbroken through the night. After that came 1200 miles of baking asphalt, ripping down I-70, chasing the sun across Kansas and into Colorado, stopping only once to sleep for four hours at a campground in Indiana, an excursion which won us the company of an upsetting number of ticks which we found on our clothes and gear.
 
 Before setting out we had noted our anticipated proximity to Niagara Falls on the first night of driving. Neither Rob nor I had seen the iconic landmark. By all accounts, though, Niagara Falls State Park, the most common place to see the falls on the U.S. side, effectively closed at 11pm. We would not be nearby until after midnight. It seemed our acquaintance with the falls was not to be.
 
@@ -38,4 +37,4 @@ down.
 
 We left the park and found our way back to the highway. I couldn’t shake the sense of being in the right place at the right time. Years later I smile in appreciation of the opportunity, the sheer luck, to see a setting few will ever see: a deserted Niagara Falls, lit eerily in the night. Remember: it’s the detours that make memories.
 
-![the walker](../../images/essays/niagara.jpg)
+![the walker](../images/essays/niagara.jpg)

@@ -1,10 +1,14 @@
 import { normalize } from 'polished';
 
 import { createGlobalStyle } from './styled';
-import theme from './theme';
 
 export default createGlobalStyle`
   ${normalize()}
+
+  ::selection {
+    background: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+  }
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -16,9 +20,9 @@ export default createGlobalStyle`
   }
 
   body {
-    color: ${(props) => props.theme.colors.text};
-    font-size: ${theme.fontSizes[2]}px;
-    font-family: ${theme.fonts.serif};
+    color: ${({ theme }) => theme.colors.text};
+    font-size: ${({ theme }) => theme.fontSizes[2]}px;
+    font-family: ${({ theme }) => theme.fonts.serif};
     line-height: 1.58;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -48,12 +52,12 @@ export default createGlobalStyle`
   }
 
   a {
-    color: ${theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
     text-decoration: underline;
     text-decoration-skip: ink;
-    text-decoration-color: ${theme.colors.primary};
+    text-decoration-color: ${({ theme }) => theme.colors.primary};
     transition: 0.1s box-shadow;
-    box-shadow: inset 0 -4px 0 ${theme.colors.violet2};
+    box-shadow: inset 0 -4px 0 ${({ theme }) => theme.colors.violet2};
   }
 
   img {

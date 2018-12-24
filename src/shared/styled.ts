@@ -8,10 +8,7 @@ const {
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<
-  ThemeInterface,
-  ThemeInterface
->;
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>;
 
 export { css, createGlobalStyle, keyframes, ThemeProvider };
 

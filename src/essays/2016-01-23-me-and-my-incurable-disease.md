@@ -1,7 +1,6 @@
 ---
 title: Me and my incurable disease
 excerpt: This is a story about accepting what cannot be changed. About growing older and learning to understand that the minor setbacks of your largely picturesque life pale in comparison to the hardships of others.
-layout: essay
 ---
 
 This is a story about accepting what cannot be changed. About growing older and learning to understand that the minor setbacks of your largely picturesque life pale in comparison to the hardships of others. It’s about embracing what you once detested; being proud of something that historically caused you to blush with embarrassment. A story about learning to be honest rather than hiding behind a veneer that only caused you shame. Buried inside, a story within a story, is a chapter in my ongoing attempt to be open and honest with myself and others, to explore what makes me me, and to bare my soul, as it were, on matters often left unspoken and buried, remorsefully.

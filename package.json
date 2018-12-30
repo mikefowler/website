@@ -62,7 +62,9 @@
   "devDependencies": {
     "@playlyfe/gql": "^2.6.1",
     "@types/luxon": "^1.4.1",
+    "@types/modular-scale": "^5.1.0",
     "@types/node": "^10.12.15",
+    "@types/palx": "^1.0.0",
     "@types/reach__router": "^1.2.2",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",

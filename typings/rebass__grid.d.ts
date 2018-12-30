@@ -25,8 +25,10 @@ declare module '@rebass/grid' {
       FontSizeProps,
       FlexProps,
       OrderProps,
-      AlignSelfProps {
+      AlignSelfProps,
+      CSSProps {
     as?: string;
+    css?: any;
   }
 
   export interface GridFlexProps

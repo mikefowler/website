@@ -21,7 +21,19 @@ const LayoutQuery = graphql`
   }
 `;
 
-const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
+interface LayoutProps extends GatsbyPage {
+  floating?: boolean;
+  inverse?: boolean;
+  container?: boolean;
+}
+
+const Layout: React.SFC<LayoutProps> = ({
+  children,
+  container = true,
+  floating,
+  inverse,
+  location,
+}) => (
   <StaticQuery query={LayoutQuery}>
     {(data) => (
       <>
@@ -36,8 +48,13 @@ const Layout: React.SFC<GatsbyPage> = ({ children, location }) => (
         </Helmet>
         <ThemeProvider theme={theme}>
           <>
-            <Header location={location} siteTitle={data.site.siteMetadata.title} />
-            <Container as="main">{children}</Container>
+            <Header
+              location={location}
+              siteTitle={data.site.siteMetadata.title}
+              inverse={inverse}
+              floating={floating}
+            />
+            {container ? <Container as="main">{children}</Container> : children}
             <Footer />
             <GlobalStyles />
           </>

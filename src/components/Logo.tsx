@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Text } from 'rebass';
 
-import styled from '../shared/styled';
+import styled, { css } from '../shared/styled';
 import { ThemeInterface } from '../shared/theme';
 import HideVisibility from './HideVisibility';
 
 export interface LogoProps {
   expanded?: boolean;
+  inverse?: boolean;
 }
 
 const WordmarkLeft = styled.span`
@@ -25,8 +26,8 @@ const WordmarkRight = styled.span`
   opacity: 0;
 `;
 
-const wordmarkExpandedStyles = (theme: ThemeInterface) => `
-  color: ${theme.colors.primary};
+const wordmarkExpandedStyles = (theme: ThemeInterface, color: string) => `
+  color: ${color};
 
   ${WordmarkLeft} {
     transform: translateX(0);
@@ -39,22 +40,25 @@ const wordmarkExpandedStyles = (theme: ThemeInterface) => `
 `;
 
 const Wordmark = styled.div<LogoProps>`
+  color: ${(p) => (p.inverse ? p.theme.colors.white : p.theme.colors.text)};
   position: relative;
-  color: ${({ theme }) => theme.colors.text};
   transition: 0.2s color;
 
-  ${(p) => (p.expanded ? wordmarkExpandedStyles(p.theme) : '')}
+  ${(p) =>
+    p.expanded &&
+    wordmarkExpandedStyles(p.theme, p.inverse ? p.theme.colors.white : p.theme.colors.primary)}
 
   @media (hover: hover) {
     &:hover {
-      ${({ theme }) => wordmarkExpandedStyles(theme)}
+      ${(p) =>
+        wordmarkExpandedStyles(p.theme, p.inverse ? p.theme.colors.white : p.theme.colors.primary)}
     }
   }
 `;
 
-const Logo: React.SFC<LogoProps> = ({ expanded }) => (
+const Logo: React.SFC<LogoProps> = ({ expanded, inverse }) => (
   <Text fontWeight="normal" textAlign="center" fontFamily="cursive" fontSize={40}>
-    <Wordmark expanded={expanded}>
+    <Wordmark inverse={inverse} expanded={expanded}>
       <WordmarkLeft>
         M<HideVisibility>ike</HideVisibility>
       </WordmarkLeft>

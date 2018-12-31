@@ -5,7 +5,7 @@ import { HeightProps, SpaceProps, WidthProps } from 'styled-system';
 import theme from '../shared/theme';
 
 export interface BarProps extends SpaceProps, WidthProps, HeightProps {
-  color?: typeof theme['colors'];
+  color?: string;
   inline?: boolean;
 }
 

@@ -21,7 +21,7 @@ export const query = gql`
           timestamp
           localFile {
             childImageSharp {
-              fluid(maxHeight: 600) {
+              fluid(maxHeight: 600, maxWidth: 600) {
                 ...ImageFluid
               }
             }
@@ -32,10 +32,6 @@ export const query = gql`
   }
 `;
 
-function getImage(props: IndexPageQueryInterface) {
-  return idx(props, (_) => _.images.edges[0].node);
-}
-
 function getImageMeta(props: IndexPageQueryInterface) {
   return idx(props, (_) => _.images.edges[0].node.localFile.childImageSharp.fluid) as FluidObject;
 }
@@ -45,15 +41,14 @@ function getTimestamp(props: IndexPageQueryInterface) {
 }
 
 const IndexPage: React.SFC<IndexPageProps> = ({ data, location }) => {
-  const image = getImage(data);
   const date = DateTime.fromMillis(getTimestamp(data) * 1000);
 
   return (
-    <Layout location={location}>
+    <Layout container={false} location={location}>
       <Flex justifyContent="center" mt={4}>
-        <Box width={[1, 3 / 4]} flex="0 1 auto">
+        <Box width={[1, 2 / 3, 1 / 2]} css={{ maxWidth: 550 }} flex="0 1 auto">
           <Img fluid={getImageMeta(data)} />
-          <Text mt={3} textAlign="center">
+          <Text fontSize={1} mt={3} textAlign="center">
             {date.toFormat('MMMM d, y')}
           </Text>
         </Box>

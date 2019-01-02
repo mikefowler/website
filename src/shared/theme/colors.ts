@@ -185,6 +185,8 @@ export default {
   // Generic
   ...colors,
   white: '#fff',
+  whiteTransparent: 'rgba(255, 255, 255, 0.5)',
+  blackTransparent: 'rgba(0, 0, 0, 0.5)',
 
   // Named
   link: colors.gray8,

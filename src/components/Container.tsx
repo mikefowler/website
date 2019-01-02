@@ -1,15 +1,11 @@
-import * as React from 'react';
-import { Box } from 'rebass';
+import { Card } from 'rebass';
+import styled from '../shared/styled';
 
-interface ContainerProps {
-  as?: string;
-  className?: string;
-}
-
-const Container: React.SFC<ContainerProps> = ({ as, children, className }) => (
-  <Box as={as} m="0 auto" px="2rem" className={className} css={{ maxWidth: 1192 }}>
-    {children}
-  </Box>
-);
+const Container = styled<typeof Card>(Card).attrs({
+  m: '0 auto',
+  px: '2rem',
+})`
+  max-width: 1192px;
+`;
 
 export default Container;

@@ -76,12 +76,12 @@ declare module 'rebass' {
     variant?: string;
   }
 
-  export const Box: StyledComponent<BoxProps>;
-  export const Flex: StyledComponent<FlexProps>;
-  export const Text: StyledComponent<TextProps>;
-  export const Heading: StyledComponent<HeadingProps>;
-  export const Button: StyledComponent<ButtonProps>;
-  export const Link: StyledComponent<LinkProps>;
-  export const Image: StyledComponent<ImageProps>;
-  export const Card: StyledComponent<CardProps>;
+  export const Box: StyledComponent<any, any, BoxProps>;
+  export const Flex: StyledComponent<any, any, FlexProps>;
+  export const Text: StyledComponent<any, any, TextProps>;
+  export const Heading: StyledComponent<any, any, HeadingProps>;
+  export const Button: StyledComponent<any, any, ButtonProps>;
+  export const Link: StyledComponent<any, any, LinkProps>;
+  export const Image: StyledComponent<any, any, ImageProps>;
+  export const Card: StyledComponent<any, any, CardProps>;
 }

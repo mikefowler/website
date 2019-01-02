@@ -20,8 +20,9 @@ const HeaderContainer = styled(Container)<{ floating?: boolean }>`
     floating &&
     css`
       position: absolute;
-      left: 0;
+      left: 50%;
       top: 0;
+      transform: translateX(-50%);
       width: 100%;
     `}
 `;

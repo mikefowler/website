@@ -51,6 +51,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/podcasts`,
+        name: 'podcasts',
+      },
+    },
+    {
       resolve: `gatsby-plugin-collections`,
       options: {
         permalink: ':collection/:title',
@@ -81,6 +88,11 @@ module.exports = {
               perPage: 10,
               layout: 'JournalsIndex',
             },
+          },
+          {
+            name: 'podcasts',
+            path: `${__dirname}/src/podcasts`,
+            output: false,
           },
         ],
       },

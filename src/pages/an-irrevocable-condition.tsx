@@ -51,7 +51,7 @@ class AudioPage extends Component<AudioPageProps> {
   private players: HTMLAudioElement[] = [];
 
   render() {
-    const { data } = this.props;
+    const { data, location } = this.props;
     const episodes = getEpisodes(data);
 
     return (
